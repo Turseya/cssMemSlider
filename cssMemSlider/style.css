@@ -1,5 +1,6 @@
 body {
     padding-top: 200px;
+    background-color: mediumorchid;
 }
 
 input[type="radio"] {
@@ -8,16 +9,17 @@ input[type="radio"] {
 
 .slider {
     width: 30%;
-    height: 500px;
+    height: 300px;
     margin: 0 auto;
-    border: 1px solid black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .5);
     overflow: hidden;
 }
 
 .slide {
-    display: none;
-    padding-top: 70px;
-    width: 100%;
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
 }
 
 .slide img {
@@ -29,6 +31,7 @@ input[type="radio"] {
 
 .slider-controls {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;
 }
@@ -68,11 +71,17 @@ label:hover {
 #radio2:checked ~ .slider .slide2,
 #radio3:checked ~ .slider .slide3,
 #radio4:checked ~ .slider .slide4 {
-    display: block;
+    opacity: 1;
+    height: auto;
 }
 
-@media screen and (max-width: 321px) {
+
+@media only screen and (max-width: 500px) {
     .slider {
-        width: 80%;
+        width: 90%;
     }
+    .slider-controls {
+        flex-direction: column-reverse;
+    }
+    
 }
